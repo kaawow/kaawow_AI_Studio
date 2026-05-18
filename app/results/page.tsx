@@ -25,7 +25,6 @@ import {
   Trophy, 
   X
 } from 'lucide-react';
-import { toPng } from 'html-to-image';
 import Papa from 'papaparse';
 
 export default function ResultsPage() {

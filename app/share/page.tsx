@@ -10,7 +10,7 @@ import {
   getTeamColorClass, 
   getTeamTextColorClass 
 } from '@/lib/match-utils';
-import { toPng } from 'html-to-image';
+import * as htmlToImage from 'html-to-image';
 import { ChevronLeft, Download, Trophy, Camera } from 'lucide-react';
 import { motion } from 'motion/react';
 
@@ -42,7 +42,7 @@ export default function SharePage() {
     try {
       // Small delay to ensure styles are applied
       await new Promise(r => setTimeout(r, 500));
-      const dataUrl = await toPng(captureRef.current, { 
+      const dataUrl = await htmlToImage.toPng(captureRef.current, { 
         cacheBust: true, 
         quality: 1, 
         pixelRatio: 2,
