@@ -166,13 +166,16 @@ export default function SharePage() {
                 <table className="w-full text-left border-collapse table-fixed">
                   <thead>
                     <tr className="bg-slate-900 text-white">
-                      <th className="w-16 p-4 text-[10px] font-bold uppercase tracking-widest pl-10">Pos</th>
-                      <th className="w-72 p-4 text-[10px] font-bold uppercase tracking-widest">Team</th>
-                      <th className="w-16 p-4 text-[10px] font-bold uppercase tracking-widest text-center">P</th>
-                      <th className="w-16 p-4 text-[10px] font-bold uppercase tracking-widest text-center">W</th>
-                      <th className="w-16 p-4 text-[10px] font-bold uppercase tracking-widest text-center">L</th>
-                      <th className="w-16 p-4 text-[10px] font-bold uppercase tracking-widest text-center">GD</th>
-                      <th className="w-20 p-4 text-[10px] font-bold uppercase tracking-widest text-center">Pts</th>
+                      <th className="w-14 p-4 text-[10px] font-bold uppercase tracking-widest pl-10">Pos</th>
+                      <th className="w-64 p-4 text-[10px] font-bold uppercase tracking-widest">Team</th>
+                      <th className="w-12 p-4 text-[10px] font-bold uppercase tracking-widest text-center">P</th>
+                      <th className="w-12 p-4 text-[10px] font-bold uppercase tracking-widest text-center">W</th>
+                      <th className="w-12 p-4 text-[10px] font-bold uppercase tracking-widest text-center">D</th>
+                      <th className="w-12 p-4 text-[10px] font-bold uppercase tracking-widest text-center">L</th>
+                      <th className="w-12 p-4 text-[10px] font-bold uppercase tracking-widest text-center">GF</th>
+                      <th className="w-12 p-4 text-[10px] font-bold uppercase tracking-widest text-center">GA</th>
+                      <th className="w-14 p-4 text-[10px] font-bold uppercase tracking-widest text-center">GD</th>
+                      <th className="w-16 p-4 text-[10px] font-bold uppercase tracking-widest text-center">Pts</th>
                       <th className="p-4 text-[10px] font-bold uppercase tracking-widest pr-10 text-right">Form History</th>
                     </tr>
                   </thead>
@@ -183,14 +186,17 @@ export default function SharePage() {
                         <td className="p-4">
                           <div className="flex items-center gap-3">
                             <div className={`w-4 h-4 shrink-0 rounded-full ${getTeamColorClass(team.name)} border-2 border-white`} />
-                            <span className="text-base font-black uppercase tracking-tight text-slate-900">{team.name}</span>
+                            <span className="text-sm font-black uppercase tracking-tight text-slate-900">{team.name}</span>
                           </div>
                         </td>
-                        <td className="p-4 text-center text-base font-medium text-slate-500">{team.played}</td>
-                        <td className="p-4 text-center text-base font-medium text-slate-500">{team.won}</td>
-                        <td className="p-4 text-center text-base font-medium text-slate-500">{team.lost}</td>
+                        <td className="p-4 text-center text-sm font-medium text-slate-500">{team.played}</td>
+                        <td className="p-4 text-center text-sm font-medium text-slate-500">{team.won}</td>
+                        <td className="p-4 text-center text-sm font-medium text-slate-500">{team.drawn}</td>
+                        <td className="p-4 text-center text-sm font-medium text-slate-500">{team.lost}</td>
+                        <td className="p-4 text-center text-sm font-medium text-slate-500">{team.gf}</td>
+                        <td className="p-4 text-center text-sm font-medium text-slate-500">{team.ga}</td>
                         <td className="p-4 text-center text-lg font-bold text-slate-700">{team.gd > 0 ? `+${team.gd}` : team.gd}</td>
-                        <td className="p-4 text-center text-2xl font-black text-slate-900">{team.points}</td>
+                        <td className="p-4 text-center text-xl font-black text-slate-900">{team.points}</td>
                         <td className="p-4 pr-10">
                           <div className="flex gap-1.5 justify-end">
                             {team.form.map((f, i) => (
