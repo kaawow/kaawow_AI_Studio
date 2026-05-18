@@ -119,7 +119,7 @@ export function getTeamColorClass(colorName: string | undefined): string {
     purple: 'bg-purple-500',
     pink: 'bg-pink-500',
     black: 'bg-slate-900',
-    white: 'bg-white border border-slate-200',
+    white: 'bg-white border border-slate-300',
     gray: 'bg-slate-500',
   };
   return maps[name] || 'bg-slate-200';

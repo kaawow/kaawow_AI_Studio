@@ -128,12 +128,12 @@ export default function SharePage() {
                   const winner = homeWon ? homeTeam : (awayWon ? awayTeam : null);
                   const isDraw = match.homeScore === match.awayScore;
 
-                  return (
+                    return (
                     <div 
                       key={idx} 
                       className={`flex flex-col items-center justify-center p-6 rounded-3xl border text-center transition-all ${
                         winner 
-                          ? `${getTeamColorClass(winner)} ${getTeamTextColorClass(winner)} border-white/20` 
+                          ? `${getTeamColorClass(winner)} ${getTeamTextColorClass(winner)} border-current/10` 
                           : 'bg-slate-50 border-slate-100 text-slate-800'
                       }`}
                     >
@@ -143,8 +143,10 @@ export default function SharePage() {
                           {homeTeam}
                         </span>
                         <div className={`px-4 py-2 rounded-xl text-xl font-black w-full max-w-[140px] flex justify-center ${
-                          winner ? 'bg-white/20 backdrop-blur-sm' : 'bg-slate-900 text-white'
-                        }`}>
+                          winner 
+                            ? (getTeamTextColorClass(winner) === 'text-white' ? 'bg-white/20' : 'bg-black/5') 
+                            : 'bg-slate-900 text-white'
+                        } backdrop-blur-sm`}>
                           {match.homeScore} : {match.awayScore}
                         </div>
                         <span className={`text-xs font-black uppercase w-full px-2 ${winner ? '' : 'text-slate-400'}`}>
@@ -213,9 +215,9 @@ export default function SharePage() {
             </div>
 
             {/* The Winner */}
-            <div className={`p-10 rounded-[3rem] text-white space-y-6 flex items-center justify-between ${getTeamColorClass(rankings[0].name)} ${getTeamTextColorClass(rankings[0].name)} mt-auto border-4 border-white/20`}>
+            <div className={`p-10 rounded-[3rem] space-y-6 flex items-center justify-between ${getTeamColorClass(rankings[0].name)} ${getTeamTextColorClass(rankings[0].name)} mt-auto border-4 border-current/10`}>
               <div className="flex items-center gap-6">
-                <div className="p-5 bg-white/20 rounded-[1.5rem] backdrop-blur-sm">
+                <div className={`p-5 rounded-[1.5rem] backdrop-blur-sm ${getTeamTextColorClass(rankings[0].name) === 'text-white' ? 'bg-white/20' : 'bg-black/5'}`}>
                   <Trophy size={48} />
                 </div>
                 <div>
@@ -224,11 +226,11 @@ export default function SharePage() {
                 </div>
               </div>
               <div className="flex gap-8">
-                <div className="bg-black/10 p-6 rounded-2xl min-w-[160px] border border-white/10 text-center">
+                <div className={`${getTeamTextColorClass(rankings[0].name) === 'text-white' ? 'bg-white/10' : 'bg-black/10'} p-6 rounded-2xl min-w-[160px] border border-current/10 text-center`}>
                   <p className="text-xs font-black uppercase opacity-60 mb-1 tracking-widest">Total Points</p>
                   <p className="text-5xl font-black">{rankings[0].points}</p>
                 </div>
-                <div className="bg-black/10 p-6 rounded-2xl min-w-[160px] border border-white/10 text-center">
+                <div className={`${getTeamTextColorClass(rankings[0].name) === 'text-white' ? 'bg-white/10' : 'bg-black/10'} p-6 rounded-2xl min-w-[160px] border border-current/10 text-center`}>
                   <p className="text-xs font-black uppercase opacity-60 mb-1 tracking-widest">Goal Diff</p>
                   <p className="text-5xl font-black">{rankings[0].gd > 0 ? `+${rankings[0].gd}` : rankings[0].gd}</p>
                 </div>

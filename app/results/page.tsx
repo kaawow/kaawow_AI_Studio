@@ -286,8 +286,8 @@ export default function ResultsPage() {
               </table>
             </div>
 
-            <div className={`p-8 rounded-[2rem] text-white space-y-4 shadow-2xl ${getTeamColorClass(rankings[0].name)} ${getTeamTextColorClass(rankings[0].name)}`}>
-              <div className="flex items-center gap-4 border-b border-black/10 pb-4">
+            <div className={`p-8 rounded-[2rem] space-y-4 shadow-2xl ${getTeamColorClass(rankings[0].name)} ${getTeamTextColorClass(rankings[0].name)}`}>
+              <div className="flex items-center gap-4 border-b border-current/10 pb-4">
                 <Trophy size={32} />
                 <div>
                   <h3 className="text-sm font-bold uppercase tracking-widest opacity-60">The Winner</h3>
@@ -295,11 +295,11 @@ export default function ResultsPage() {
                 </div>
               </div>
               <div className="grid grid-cols-2 gap-4">
-                <div className="bg-black/5 p-4 rounded-2xl">
+                <div className={`${getTeamTextColorClass(rankings[0].name) === 'text-white' ? 'bg-white/10' : 'bg-black/5'} p-4 rounded-2xl`}>
                   <p className="text-[10px] font-bold uppercase opacity-60 mb-1">Total Points</p>
                   <p className="text-3xl font-black">{rankings[0].points}</p>
                 </div>
-                <div className="bg-black/5 p-4 rounded-2xl">
+                <div className={`${getTeamTextColorClass(rankings[0].name) === 'text-white' ? 'bg-white/10' : 'bg-black/5'} p-4 rounded-2xl`}>
                   <p className="text-[10px] font-bold uppercase opacity-60 mb-1">Goal Diff</p>
                   <p className="text-3xl font-black">{rankings[0].gd > 0 ? `+${rankings[0].gd}` : rankings[0].gd}</p>
                 </div>
