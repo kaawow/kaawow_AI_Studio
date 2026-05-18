@@ -1,0 +1,38 @@
+{
+  "entities": {
+    "MatchDay": {
+      "title": "Match Day",
+      "description": "Records for a specific day of football matches.",
+      "type": "object",
+      "properties": {
+        "date": { "type": "string", "description": "The date of the matches (YYYY-MM-DD)" },
+        "teams": {
+          "type": "array",
+          "description": "The three teams involved (color names)",
+          "items": { "type": "string" }
+        },
+        "matches": {
+          "type": "array",
+          "description": "The nine matches played",
+          "items": {
+            "type": "object",
+            "properties": {
+              "homeTeamIndex": { "type": "integer" },
+              "awayTeamIndex": { "type": "integer" },
+              "homeScore": { "type": "integer" },
+              "awayScore": { "type": "integer" }
+            }
+          }
+        },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["date", "teams", "matches"]
+    }
+  },
+  "firestore": {
+    "/matchDays/{matchDayId}": {
+      "schema": "MatchDay",
+      "description": "Collection of match day records"
+    }
+  }
+}

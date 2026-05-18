@@ -1,0 +1,8 @@
+{
+  "name": "MatchDay Tracker",
+  "description": "Log and track football match results with automated ranking tables, CSV export, and shareable status cards.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

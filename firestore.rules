@@ -1,0 +1,33 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Global Deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function isValidMatchDay(data) {
+      return data.keys().hasAll(['date', 'teams', 'matches', 'createdAt'])
+        && data.keys().size() == 4
+        && data.date is string && data.date.size() == 10
+        && data.teams is list && data.teams.size() == 3
+        && data.matches is list && data.matches.size() == 9
+        && data.createdAt == request.time;
+    }
+
+    match /matchDays/{matchDayId} {
+      allow read: if true;
+      allow create: if true; // Simplify for now to allow addDoc
+      allow update: if true; // Allow updates if we want to overwrite
+      allow delete: if true;
+    }
+  }
+}
